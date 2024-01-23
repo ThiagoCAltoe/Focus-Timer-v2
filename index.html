@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusTimer</title>
+  <meta name="description" content="Temporizador estilo pomodoro">
+  <link rel="stylesheet" href="./style.css">
+
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <link rel="shortcut icon" href="./assets/favicon.svg" type="image/x-svg">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+  <script type="module" src="./src/main.js" defer></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <button id="toggle-mode">
+      <span class="sr-only">Ativar Light Mode</span>
+      <i class="ph-bold ph-sun"></i>
+      <i class="ph-bold ph-moon"></i>
+    </button>
+    <div class="time">
+      <section id="timer">
+        <span id="minutes">00</span>
+        <span>:</span>
+        <span id="seconds">00</span>
+      </section>
+      <section id="controls">
+        <button data-action="toggleRunning" class="ph ph-play-circle"><span class="sr-only">Iniciar
+            contador</span></button>
+        <button data-action="toggleRunning" class="ph ph-pause-circle"><span class="sr-only">Pausar
+            contador</span></button>
+        <button data-action="reset" class="ph ph-stop-circle"><span class="sr-only">Reiniciar
+            contador</span></button>
+        <button data-action="upFive" class="ph ph-plus-circle"><span class="sr-only">Mais 5 minutos</span></button>
+        <button data-action="downFive" class="ph ph-minus-circle"><span class="sr-only">Menos 5 minutos</span></button>
+
+      </section>
+    </div>
+    <section id="sounds">
+      <button id="forest" data-action="toggleForest"><span class="sr-only">test</span>
+        <i data-action="toggleForest" class="icon" data-lucide="tree-pine"></i>
+      </button>
+      <button id="rain" data-action="toggleRain">
+        <i data-action="toggleRain" class="icon" data-lucide="cloud-rain"></i>
+      </button>
+      <button id="coffe" data-action="toggleCoffe">
+        <i data-action="toggleCoffe" class="icon" data-lucide="store"></i>
+      </button>
+      <button id="fire" data-action="toggleFire">
+        <i data-action="toggleFire" class="icon" data-lucide="flame"></i>
+      </button>
+    </section>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+:root {
+  --hue: 240;
+  --bg-color: hsl(var(--hue), 5%, 7%);
+  --text-color: hsl(var(--hue), 40%, 98%);
+  --controls-bg-color: hsl(var(--hue), 7%, 36%);
+
+  font-size: clamp(40%, 1% + 2vw, 62.5%)
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html.light {
+  --text-color: hsl(240, 6%, 21%);
+  --bg-color: hsl(0, 0%, 100%);
+  --controls-bg-color: hsl(240, 9%, 89%);
+}
+
+html.light .ph-sun,
+html:not(.light) .ph-moon {
+  display: none;
+}
+
+#toggle-mode {
+  position: absolute;
+  right: 3.2rem;
+  top: 3.2rem;
+  font-size: 3.2rem;
+  line-height: 0;
+
+  color: var(--text-color);
+}
+
+.sr-only {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+
+  margin: -1px;
+  padding: 0px;
+  border: 0;
+  appearance: none;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+  display: grid;
+  height: 100vh;
+  place-content: center;
+
+}
+
+#app {
+  display: flex;
+  max-width: 128rem;
+  gap: 19.2rem;
+  align-items: center;
+  margin-top: -12rem;
+}
+
+.flex {
+  display: flex;
+}
+
+#timer {
+  font-size: 12.6rem;
+  font-family: 'Roboto', sans-serif;
+  grid-area: timer;
+  display: flex;
+  justify-content: center;
+}
+
+#controls {
+  display: flex;
+  margin-top: 1.6rem;
+  padding: 1.2rem 2rem;
+  gap: 4rem;
+  background-color: var(--controls-bg-color);
+  border-radius: 999rem;
+
+  grid-area: controls;
+}
+
+#sounds {
+  display: grid;
+  gap: 3.2rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  grid-area: sounds;
+}
+
+
+#sounds button {
+  border: none;
+  padding: 3rem;
+  border-radius: 1.5rem;
+  background: var(--controls-bg-color);
+  width: min(13.8rem);
+  height: min(15.2rem);
+
+  cursor: pointer;
+
+}
+
+.icon {
+  color: var(--text-color);
+
+  width: 4.8rem;
+  height: 4.8rem;
+}
+
+#controls>button,
+#toggle-mode {
+  background-color: transparent;
+  border: 0;
+  color: var(--text-color);
+
+  cursor: pointer;
+
+  font-size: 4.8rem;
+}
+
+/* controls */
+.running .ph-play-circle,
+.running .ph-timer,
+html:not(.running) .ph-pause-circle {
+  display: none;
+}
+
+/* sounds */
+.forest-on #forest {
+  background-color: green;
+
+  -webkit-animation: rotate-in-ver 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: rotate-in-ver 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.forest-on #forest>.icon {
+  color: #fff;
+}
+
+.rain-on #rain {
+  background-color: blue;
+  -webkit-animation: rotate-in-ver 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: rotate-in-ver 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.rain-on #rain>.icon {
+  color: #fff;
+}
+
+.coffe-on #coffe {
+  background-color: burlywood;
+  -webkit-animation: rotate-in-ver 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: rotate-in-ver 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.coffe-on #coffe>.icon {
+  color: #fff;
+}
+
+.fire-on #fire {
+  background-color: firebrick;
+  -webkit-animation: rotate-in-ver 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: rotate-in-ver 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.fire-on #fire>.icon {
+  color: #fff;
+}
+
+@-webkit-keyframes rotate-in-ver {
+  0% {
+    -webkit-transform: rotateY(-360deg);
+    transform: rotateY(-360deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes rotate-in-ver {
+  0% {
+    -webkit-transform: rotateY(-360deg);
+    transform: rotateY(-360deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) and (min-height: 551px) {
+  #app {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    gap: 8rem;
+  }
+
+  #toggle-mode {
+    top: 1;
+    right: 1;
+  }
+}
+
+@media (max-height: 550px) {
+  #app {
+    margin: auto;
+    gap: 2rem;
+    margin: auto;
+  }
+}
