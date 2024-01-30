@@ -4,31 +4,35 @@ import { reset } from "./actions.js"
 import { kitchenTimer } from "./sounds.js"
 
 export function countdown() {
-  clearTimeout(state.countdownID)
+  clearInterval(state.countdownID) // Limpa qualquer intervalo existente
 
   if (!state.isRunning) {
     return
   }
 
-  let minutes = Number(el.minutes.textContent)
-  let seconds = Number(el.seconds.textContent)
+    let minutes2 = Number(el.minutes.textContent)
+    let seconds2 = Number(el.seconds.textContent)
 
-  seconds--
+  let initialTime = minutes2 * 60 + seconds2 // Tempo inicial em segundos
+  let startTime = Date.now(); // Registrar o tempo de início
 
-  if (seconds < 0) {
-    seconds = 59
-    minutes--
-  }
+  state.countdownID = setInterval(() => {
+    let elapsedTime = Math.floor((Date.now() - startTime) / 1000) // Tempo decorrido em segundos
+    let remainingTime = initialTime - elapsedTime // Tempo restante em segundos
 
-  if (minutes < 0) {
-    reset()
-    kitchenTimer.play()
-    return
-  }
+    if (remainingTime <= 0) {
+      // Tempo acabou
+      reset()
+      kitchenTimer.play()
+      clearInterval(state.countdownID) // Limpa o intervalo quando o tempo acabar
+      return
+    }
 
-  updateDisplay(minutes, seconds)
+    let minutes = Math.floor(remainingTime / 60) // Converter para minutos
+    let seconds = remainingTime % 60 // Segundos restantes
 
-  state.countdownID = setTimeout(() => countdown(), 1000)
+    updateDisplay(minutes, seconds)
+  }, 1000)
 }
 
 export function updateDisplay(minutes, seconds) {

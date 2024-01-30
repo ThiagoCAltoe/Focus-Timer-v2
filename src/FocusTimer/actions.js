@@ -13,6 +13,7 @@ export function toggleRunning() {
 export function reset() {
   state.isRunning = false
   document.documentElement.classList.remove("running")
+  clearInterval(state.countdownID)
   timer.updateDisplay()
 
   sounds.buttonPressAudio.play()
