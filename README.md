@@ -27,7 +27,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Focus Timer etilo Pomodoro 2.0
+Focus Timer estilo Pomodoro 2.0
 
 - [Acesse o projeto finalizado, online](https://thiagocaltoe.github.io/Focus-Timer-v2)
 
